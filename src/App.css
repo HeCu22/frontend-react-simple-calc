@@ -1,0 +1,125 @@
+
+* {
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*box-sizing: border-box;*/
+    --bordeaux: #b02742;
+    --wine: #6b2737ff;
+    --persian-orange: #e08e45ff;
+    --lemon-chiffon: #fffacdff;
+    --peach: #ffe5b4ff;
+    --granny-smith-apple: #bdf7b7ff;
+    --powder-blue: #accfd1ff;
+    --test: #784d57;
+    --test2: #5d474e;
+    /* SCSS HEX */
+    --peach-yellow: #f1daa1ff;
+    --columbia-blue: #b5cad5ff;
+    --xanthous: #e5b544ff;
+    --platinum: #e5e6e7ff;
+    --steel-blue: #4d80a1ff;
+    --burnt-sienna: #e07149ff;
+    --paynes-gray: #355970ff;
+    --verdigris: #6cbab4ff;
+    --seasalt: #f6f7f8ff;
+
+    /* CSS HEX */
+    --robin-egg-blue: #66c1caff;
+    --garnet: #7b3b3dff;
+    --tomato: #f9613fff;
+    --redwood: #a05349ff;
+    --caribbean-current: #28767bff;
+
+    /* CSS HEX */
+    --misty-rose: #fbe4ddff;
+    --champagne-pink: #dccbc4ff;
+    --redwood: #a2544aff;
+    --tea-rose-red: #d7b7b7ff;
+    --garnet: #723933ff;
+}
+
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--columbia-blue);
+    color: var(--wine);
+    fill: var(--lemon-chiffon);
+}
+
+.extra path {
+    fill: var(--bordeaux);
+}
+
+h2 {
+    background-color: var(--verdigris);
+    width: 250px;
+    text-align: left;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding-left: 2em;
+    margin: 0.6em 0.4em;
+
+}
+
+
+.logo {
+    height: 3em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 1em;
+    background-color: var(--misty-rose);
+    border-radius: 8px;
+
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+.invisible-text {
+    color: var(--powder-blue);
+    background-color: var(--powder-blue);
+
+    font-size: 1px;
+    border-bottom: 1px dashed black;
+    padding: 0 10px;
+    width: 50px;
+}
+
+.sub-text {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+
