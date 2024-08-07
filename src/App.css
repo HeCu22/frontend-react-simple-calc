@@ -1,8 +1,9 @@
 
 * {
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*box-sizing: border-box;*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
     --bordeaux: #b02742;
     --wine: #6b2737ff;
     --persian-orange: #e08e45ff;
@@ -97,29 +98,26 @@ h2 {
 }
 
 .card {
-    padding: 1em;
+    padding: 0.5em;
     background-color: var(--misty-rose);
     border-radius: 8px;
 
 }
 
+.calculation-list {
+    list-style: -moz-ethiopic-numeric;
+    display: flex;
+    flex-direction: row;
+    /*row-gap: 16px;*/
+    /*column-gap: 16px;*/
+    flex-wrap: wrap;
+}
+
+
 .read-the-docs {
     color: #888;
 }
 
-.invisible-text {
-    color: var(--powder-blue);
-    background-color: var(--powder-blue);
 
-    font-size: 1px;
-    border-bottom: 1px dashed black;
-    padding: 0 10px;
-    width: 50px;
-}
-
-.sub-text {
-    font-size: 0.9em;
-    font-weight: 500;
-}
 
 

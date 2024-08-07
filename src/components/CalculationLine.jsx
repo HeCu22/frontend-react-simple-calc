@@ -1,6 +1,20 @@
-C
-// eslint-disable-next-line react/prop-types
-function CalculationLine({ dieOne, dieTwo, dieOperator }) {
+// eslint-disable-next-line react/prop-types,no-unused-vars
+import {useState} from "react";
+import '../components/CalculationLine.css';
+
+function CalculationLine({visibleState}) {
+
+
+    const dieOne = rollDie(20);
+    const dieTwo = rollDie(10);
+    const dieOperator = rollDie(2);
+
+
+    function rollDie(sides = 6) {
+        console.log('number sides', sides);
+        return Math.ceil(Math.random() * sides);
+    }
+
     const addNumbers = (numA, numB) => numA + numB;
     const subtractNumbers = (numA, numB) => numA - numB;
     const multiplyNumbers = (numA, numB) => numA * numB;
@@ -8,7 +22,7 @@ function CalculationLine({ dieOne, dieTwo, dieOperator }) {
     const modulusNumbers = (numA, numB) => numA % numB;
 
     return (
-        <>
+        <li className="calculation-item">
             {dieOne > 9 && dieOperator === 1 &&
                 <> {
                     <h2> {dieOne} - {dieTwo} = <span
@@ -38,7 +52,7 @@ function CalculationLine({ dieOne, dieTwo, dieOperator }) {
                         className="invisible-text"> {multiplyNumbers(dieOne, dieTwo)} </span></h2>
                 } </>
             }
-        </>
+        </li>
     );
 }
 

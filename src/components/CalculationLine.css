@@ -1,0 +1,34 @@
+
+.calculation-item {
+    box-shadow: 0 1px 3px #0003;
+    border-radius: 4px;
+
+    /*padding: 16px;*/
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+
+
+.invisible-text {
+    background-color: var(--powder-blue);
+    font-size: 1px;
+    border-bottom: 1px dashed black;
+    padding: 0 10px;
+    width: 50px;
+}
+
+.invisible-text:checked {
+    color: var(--powder-blue);
+}
+
+
+.invisible-text {
+    /* if false then visible color*/
+}
+
+.sub-text {
+    font-size: 0.9em;
+    font-weight: 500;
+}
