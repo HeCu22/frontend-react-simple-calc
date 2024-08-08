@@ -9,34 +9,55 @@ import CalculationLine from "./components/CalculationLine.jsx";
 
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [time, setTime] = useState(new Date());
-    const [results, setResults] = useState([]);
-    const itemList = [0];
-    const [checked, toggleChecked] = useState(false);
+    const [results, setResults] = useState([{
+        dieOne: 0,
+        dieTwo: 0,
+        dieOperator: 0
+
+    }]);
+    const itemList = [{
+        dieOne: 0,
+        dieTwo: 0,
+        dieOperator: 0
+    }];
+    console.log('itemlist', itemList);
+    const [className, setClassName] = useState("invisible-text");
     //
     const stopTime = new Date();
 
 
     useEffect(() => {
-        if (checked) {
+        if (count <= 1 && itemList.length < 100) {
 
-            for (let i = 0; i < 99; i++) {
-                itemList.push(0);
+            for (let i = 0; i < 100; i++) {
+                itemList.push({
+
+                dieOne: rollDie(20),
+                    dieTwo: rollDie(10),
+                    dieOperator: rollDie(2)});
             }
+            itemList.shift(); // remove first element of array
 
             setResults(itemList);
+
+
         }
 
-    }, [checked]);
+    }, []);
 
+    function rollDie(sides = 6) {
+        return Math.ceil(Math.random() * sides);
+    }
     function calculateResultArray() {
 
-        toggleChecked(!checked);
+
         setCount(count + 1);
 
 
-        if (count <= 0) {
+        if (count <= 1) {
+            setClassName("visible-text");
             setTime(new Date());
         }
     }
@@ -65,14 +86,17 @@ function App() {
 
             <div className="card">
 
-                {(results.length > 0 && !checked) && <>
+                {(results.length > 0) && <>
                     <ul className="calculation-list">
                         {results.map((item) => {
                             return <CalculationLine
-                                visibleState={checked}
-                                key={item.id
+                                key={item.id}
+                                className={className}
+                                dieOne={item.dieOne}
+                                dieTwo={item.dieTwo}
+                                dieOperator={item.dieOperator}
 
-                                }/>;
+                                />;
 
                         })}
 

@@ -2,18 +2,13 @@
 import {useState} from "react";
 import '../components/CalculationLine.css';
 
-function CalculationLine({visibleState}) {
+function CalculationLine({className, dieOne, dieTwo, dieOperator}) {
+    // console.log('checked', props);
 
 
-    const dieOne = rollDie(20);
-    const dieTwo = rollDie(10);
-    const dieOperator = rollDie(2);
+    // const [classText, setClassText] = useState("invisible-text");
 
 
-    function rollDie(sides = 6) {
-        console.log('number sides', sides);
-        return Math.ceil(Math.random() * sides);
-    }
 
     const addNumbers = (numA, numB) => numA + numB;
     const subtractNumbers = (numA, numB) => numA - numB;
@@ -26,30 +21,30 @@ function CalculationLine({visibleState}) {
             {dieOne > 9 && dieOperator === 1 &&
                 <> {
                     <h2> {dieOne} - {dieTwo} = <span
-                        className="invisible-text"> {subtractNumbers(dieOne, dieTwo)}</span>
+                        className={className}> {subtractNumbers(dieOne, dieTwo)}</span>
                     </h2>
                 } </>
             }
             {dieOne > 9 && dieOperator !== 1 &&
                 <> {
                     <h2> {dieOne} / {dieTwo} = <span
-                        className="invisible-text"> {Math.floor(divideNumbers(dieOne, dieTwo))} </span> <span
+                        className={className}> {Math.floor(divideNumbers(dieOne, dieTwo))} </span> <span
                         className="sub-text">rest</span> <span
-                        className="invisible-text"> {modulusNumbers(dieOne, dieTwo)} </span>
+                        className={className}> {modulusNumbers(dieOne, dieTwo)} </span>
                     </h2>
                 } </>
             }
             {dieOne <= 9 && dieOperator === 1 &&
                 <> {
                     <h2> {dieOne} + {dieTwo} = <span
-                        className="invisible-text"> {addNumbers(dieOne, dieTwo)} </span>
+                        className={className}> {addNumbers(dieOne, dieTwo)} </span>
                     </h2>
                 } </>
             }
             {dieOne <= 9 && dieOperator !== 1 &&
                 <> {
                     <h2> {dieOne} * {dieTwo} = <span
-                        className="invisible-text"> {multiplyNumbers(dieOne, dieTwo)} </span></h2>
+                        className={className}> {multiplyNumbers(dieOne, dieTwo)} </span></h2>
                 } </>
             }
         </li>

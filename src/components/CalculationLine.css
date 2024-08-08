@@ -10,22 +10,31 @@
 }
 
 
+h2 {
+    background-color: var(--verdigris);
+    width: 250px;
+    text-align: left;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding-left: 1em;
+    margin: 0.6em 0.4em;
 
-.invisible-text {
+}
+
+.invisible-text, .visible-text {
     background-color: var(--powder-blue);
+    color: var(--powder-blue);
     font-size: 1px;
     border-bottom: 1px dashed black;
     padding: 0 10px;
     width: 50px;
 }
 
-.invisible-text:checked {
-    color: var(--powder-blue);
-}
 
-
-.invisible-text {
+.visible-text {
     /* if false then visible color*/
+    color: var(--bordeaux);
+    font-size: small;
 }
 
 .sub-text {

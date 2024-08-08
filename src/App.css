@@ -54,16 +54,6 @@
     fill: var(--bordeaux);
 }
 
-h2 {
-    background-color: var(--verdigris);
-    width: 250px;
-    text-align: left;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding-left: 2em;
-    margin: 0.6em 0.4em;
-
-}
 
 
 .logo {
