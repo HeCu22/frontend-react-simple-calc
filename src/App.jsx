@@ -29,7 +29,7 @@ function App() {
 
 
     useEffect(() => {
-            if (count <= 1 && itemList.length < 100) {
+            if (count <= 1 && itemList.length < 101) {
 
                 for (let i = 0; i < 100; i++) {
                     const operatorCalc = rollDie(4);
@@ -131,7 +131,7 @@ function App() {
                             {count % 2 > 0
                                 ?
                                 <ul className="calculation-list">
-                                    {results.slice(0, 49).map((item) => {
+                                    {results.slice(0, 51).map((item) => {
                                         return <CalculationLine
                                             key={item.id}
                                             classNameDisplay={classNameDisplay}
@@ -144,8 +144,8 @@ function App() {
                                     })} </ul>
                                 :
 
-                                <ul className="calculation-list">
-                                    {results.slice(50, 99).map((item) => {
+                                <ol className="calculation-list" start="52">
+                                    {results.slice(52, 101).map((item) => {
                                         return <CalculationLine
                                             key={item.id}
                                             classNameDisplay={classNameDisplay}
@@ -156,7 +156,7 @@ function App() {
                                         />;
 
                                     })}
-                                </ul>
+                                </ol>
 
                             }
                         </>
