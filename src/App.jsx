@@ -6,6 +6,7 @@ import DieLogo from "./assets/dice-six-fill.svg?react";
 import BrainLogo from "./assets/brain-fill.svg?react";
 import './App.css';
 import CalculationLine from "./components/CalculationLine.jsx";
+import roundTime from "./helpers/roundTime.js";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     useEffect(() => {
             if (count <= 1 && itemList.length < 101) {
 
-                for (let i = 0; i < 100; i++) {
+                for (let i = 0; i < 101; i++) {
                     const operatorCalc = rollDie(4);
                     let numberOne = 1;
                     let numberTwo = 1;
@@ -45,8 +46,12 @@ function App() {
                             //delen
                             numberOne = rollDie(20);
                             numberTwo = rollDie(9);
+                            // voorkom delen door groter getal
                             if (numberTwo > numberOne) {
-                                numberTwo = rollDie(numberOne)
+                                const numberSaved = numberOne;
+                                numberOne = numberTwo;
+                                numberTwo = numberSaved;
+                                // numberTwo = rollDie(numberOne)
                             }
                             break;
                         case 3:
@@ -55,11 +60,15 @@ function App() {
                             numberTwo = rollDie(9);
                             break;
                         case 4:
-                            // aftrekken
+                            // verschil
                             numberOne = rollDie(20);
                             numberTwo = rollDie(9);
                             if (numberTwo > numberOne) {
-                                numberTwo = rollDie(numberOne)
+                                // voorkom negatief resultaat
+                                const numberSaved = numberOne;
+                                numberOne = numberTwo;
+                                numberTwo = numberSaved;
+                                // numberTwo = rollDie(numberOne)
                             }
                             break;
                         default:
@@ -88,6 +97,7 @@ function App() {
     )
     ;
 
+    // set default value to six
     function rollDie(sides = 6) {
         return Math.ceil(Math.random() * sides);
     }
@@ -97,7 +107,7 @@ function App() {
 
         setCount(count + 1);
 
-
+        // make results visible, when clicked twide
         if (count >= 2) {
             setClassNameDisplay("visible-text");
 
@@ -115,7 +125,7 @@ function App() {
                 <span> <BrainLogo className="extra" alt="logo"/>
                 </span> Brein Sommen
                     </h1>
-                    <>  <span> Start tijd: {time.getHours()} {time.getMinutes()} {time.getSeconds()} </span>
+                    <>  <span> Start tijd: {time.toLocaleTimeString('nl-NL')} </span>
                     </>
 
                     <div>
@@ -130,10 +140,11 @@ function App() {
 
                             {count % 2 > 0
                                 ?
+                                // first page
                                 <ul className="calculation-list">
-                                    {results.slice(0, 51).map((item) => {
+                                    {results.slice(0, 51).map((item, index) => {
                                         return <CalculationLine
-                                            key={item.id}
+                                            key={index.toString().concat(count)}
                                             classNameDisplay={classNameDisplay}
                                             dieOne={item.dieOne}
                                             dieTwo={item.dieTwo}
@@ -143,11 +154,12 @@ function App() {
 
                                     })} </ul>
                                 :
-
+                                // second page
                                 <ol className="calculation-list" start="52">
-                                    {results.slice(52, 101).map((item) => {
+                                    {results.slice(52, 101).map((item, index) => {
+                                        const keyItem = index.toString().concat(count);
                                         return <CalculationLine
-                                            key={item.id}
+                                            key={keyItem}
                                             classNameDisplay={classNameDisplay}
                                             dieOne={item.dieOne}
                                             dieTwo={item.dieTwo}
@@ -169,15 +181,17 @@ function App() {
                     </button>
 
                     {count >= 1 &&
+                        // show time elapsed as soon as results will be visible
                         <div className="read-the-docs">
-
-
-                            <p> stop:
+                            <p> stop tijd:
                                 <span className={classNameDisplay}>
-                            {stopTime.getHours()} {stopTime.getMinutes()} {stopTime.getSeconds()}
+                                    {stopTime.toLocaleTimeString('nl-NL')}
                     </span></p>
-                            <p> elapsed: <span
-                                className={classNameDisplay}> {(stopTime.getTime() - time.getTime()) / 1000} </span>
+                            <p> benodigde tijd:
+                                {/*                       <span  className={classNameDisplay}> {(stopTime.getTime() - time.getTime()) / 1000} </span> */}
+
+                                <span
+                                    className={classNameDisplay}> {roundTime((stopTime.getTime() - time.getTime()) / 1000)} </span>
                             </p>
                         </div>
                     }

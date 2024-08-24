@@ -38,6 +38,10 @@ h2 {
     font-size: small;
 }
 
+.read-the-docs span {
+    font-size: larger;
+}
+
 .sub-text {
     font-size: 0.9em;
     font-weight: 500;
